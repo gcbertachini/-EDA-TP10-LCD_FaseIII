@@ -11,7 +11,5 @@ FSM::~FSM()
 {
 }
 
-void FSM::null_function() {
 
-}
 
