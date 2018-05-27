@@ -10,12 +10,6 @@ using namespace std;
 
 class Feed
 {
-private:
-	string source;
-	News * current;
-	vector <News *> titulares;
-	const FSM filter;
-	bool XML_Parser(string xml_code);
 
 public:
 	const char * get_Feed_Title();
@@ -25,5 +19,13 @@ public:
 
 	Feed();
 	~Feed();
+
+private:
+	string source;
+	News * current;
+	vector <News *> titulares;
+	const FSM filter;				//en las cosas de clase tiene el [][]
+	bool XML_Parser(string xml_code);
+
 };
 
