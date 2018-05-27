@@ -9,7 +9,6 @@ enum class Event	{CH_TAG,CH_TAG_TERMINATOR,TITLE_TAG, TITLE_TAG_TERMINATOR, ITEM
 struct cell {
 	State next_state;
 	void(*action)(void *);
-
 };
 class FSM
 {
@@ -31,7 +30,7 @@ private:
 		{	{ State::ITEM_DATE , rut1 },		 { State::ITEM_DATE , null_function },  { State::ITEM_DATE , null_function },    { State::ITEM_DATE , null_function },   { State::ITEM_DATE , null_function },  { State::ITEM_DATE , null_function },   { State::ITEM_DATE , null_function },     { State::ITEM , null_function },			 { State::ITEM_DATE , null_function },    { State::ITEM_DATE , null_function } } //ITEM_DATE state
 
 	};
-
+	uint index;
 
 public:
 	FSM();

@@ -15,6 +15,7 @@ private:
 	News * current;
 	vector <News *> titulares;
 	const FSM filter;
+	bool XML_Parser(string xml_code);
 
 public:
 	const char * get_Feed_Title();
