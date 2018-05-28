@@ -105,6 +105,7 @@ void char_data(void *userData, const XML_Char *s, int len) {
 	my_user_data_t * my_user_data = (my_user_data_t *)userData;
 
 	string received_str = string(s);		
+
 	my_user_data->to_add_data += received_str;		//i add the new info to the last thing i received. 
 													//Note that whenever there s a change in the fsm current state, to_add_data should be set to "" for this to work! 
 

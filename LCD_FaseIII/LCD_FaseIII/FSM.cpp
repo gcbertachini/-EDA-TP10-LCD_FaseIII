@@ -18,3 +18,4 @@ void FSM::act_on_event(Event received_event, my_user_data_t * user_data) {
 	to_act_on.action(user_data);
 	this->current_state = to_act_on.next_state;
 }
+
