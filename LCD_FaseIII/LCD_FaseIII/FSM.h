@@ -28,9 +28,9 @@ private:
 
 	const cell tabla[ES_AMOUUNT][EV_AMOUNT] = { //State_Table
 				//CH_TAG							  CH_TAG_TERMINATOR							TITLE_TAG							   TITLE_TAG_TERMINATOR							ITEM_TAG						 ITEM_TAG_TERMINATOR							PUB_DATE							 PUB_DATE_TERMINATOR					     OTHER_TAG							 OTHER_TAG_TERMINATOR
-		{	{ State::CHANNEL , null_function },			{ State::CHANNEL , null_function },		{ State::IDDLE , null_function },        { State::IDDLE , null_function },		 { State::IDDLE , null_function },		{ State::IDDLE , null_function },			{ State::IDDLE , null_function },		{ State::IDDLE , null_function },			 { State::IDDLE , null_function },		  { State::IDDLE , null_function }	}, //IDDLE state
+		{	{ State::CHANNEL , null_function },			{ State::IDDLE , null_function },		{ State::IDDLE , null_function },        { State::IDDLE , null_function },		 { State::IDDLE , null_function },		{ State::IDDLE , null_function },			{ State::IDDLE , null_function },		{ State::IDDLE , null_function },			 { State::IDDLE , null_function },		  { State::IDDLE , null_function }	}, //IDDLE state
 
-		{	{ State::IDDLE , null_function },			{ State::IDDLE , null_function },		{ State::CH_TITLE , null_function },	 { State::CHANNEL , null_function },	 { State::ITEM , create_news },   	{ State::CHANNEL , null_function },				{ State::ITEM_DATE , null_function }, 	{ State::CHANNEL , null_function },		 { State::CHANNEL , null_function },	  { State::CHANNEL , null_function } }, //CHANNEL state
+		{	{ State::CHANNEL , null_function },			{ State::IDDLE , null_function },		{ State::CH_TITLE , null_function },	 { State::CHANNEL , null_function },	 { State::ITEM , create_news },   	{ State::CHANNEL , null_function },				{ State::CHANNEL , null_function }, 	{ State::CHANNEL , null_function },		 { State::CHANNEL , null_function },	  { State::CHANNEL , null_function } }, //CHANNEL state
 
 		{	{ State::CH_TITLE , null_function },		{ State::CH_TITLE , null_function },	{ State::CH_TITLE , null_function },	 { State::CHANNEL , add_source },	{ State::CH_TITLE , null_function },    { State::CH_TITLE , null_function },			{ State::CH_TITLE , null_function },	{ State::CH_TITLE , null_function },		 { State::CH_TITLE , null_function },	  { State::CH_TITLE , null_function } }, //CH_TITLE state
 
