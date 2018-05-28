@@ -24,6 +24,9 @@
     <ClInclude Include="FSM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="general.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="News.cpp">
@@ -32,10 +35,10 @@
     <ClCompile Include="Feed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FSM.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="FSM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

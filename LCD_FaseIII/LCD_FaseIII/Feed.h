@@ -12,10 +12,20 @@ class Feed
 {
 
 public:
-	const char * get_Feed_Title();
-	const News * get_Next_Title();
-	const News * get_Previous_Title();
-	void run_Filter(Event event);
+
+	void set_source(string source);
+
+	const char * get_feed_title();
+	const News * get_next_title();
+	const News * get_previous_title();
+
+	News * get_current_title();
+
+	void run_filter(Event event);
+
+	void add_news(News* new_news);
+
+	void reset_feed();
 
 	Feed();
 	~Feed();
@@ -24,7 +34,7 @@ private:
 	string source;
 	News * current;
 	vector <News *> titulares;
-	const FSM filter;				//en las cosas de clase tiene el [][]
+	FSM filter;				
 	bool XML_Parser(string xml_code);
 
 };

@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="Feed.h" />
     <ClInclude Include="FSM.h" />
+    <ClInclude Include="general.h" />
     <ClInclude Include="News.h" />
   </ItemGroup>
   <ItemGroup>
