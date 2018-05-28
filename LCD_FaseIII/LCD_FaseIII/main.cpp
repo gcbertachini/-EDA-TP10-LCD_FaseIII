@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "expat.h"
-
+#include "general.h"
 #include "Feed.h"
 #include "FSM.h"
-#include "general.h"
+
 
 void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
 void end_tag(void *userData, const XML_Char *name);
@@ -13,7 +13,6 @@ void char_data(void *userData, const XML_Char *s, int len);
 
 int main(void)
 {
-
 
 	FILE * my_file = NULL;
 
@@ -40,6 +39,7 @@ int main(void)
 		if (buffer != NULL) {
 			fread(buffer, sizeof(char), file_size, my_file);
 			XML_Parse(parser, buffer, file_size, true);
+			//iterate over feed and display!!
 		}
 
 	}
@@ -54,7 +54,7 @@ int main(void)
 
 void start_tag(void *userData, const XML_Char *name, const XML_Char **atts) {
 
-	my_user_data_t * my_user_data= (my_user_data_t *) userData;
+	my_user_data_t * my_user_data = (my_user_data_t *) userData;
 
 	Event received_event;
 
@@ -70,9 +70,9 @@ void start_tag(void *userData, const XML_Char *name, const XML_Char **atts) {
 		received_event = Event::PUB_DATE;
 	else 
 		received_event = Event::OTHER_TAG;
-	
 
-	my_user_data->feed->run_filter(received_event);			//reacts to the new event. 
+	FSM * fsm = (FSM*) my_user_data->fsm;
+	fsm->act_on_event(received_event, my_user_data);
 
 	
 }
@@ -95,7 +95,8 @@ void end_tag(void *userData, const XML_Char *name) {
 	else 
 		received_event = Event::OTHER_TAG_TERMINATOR;
 
-	my_user_data->feed->run_filter(received_event); //reacts to the new event. Possibly changing feed data
+	FSM * fsm = (FSM*)my_user_data->fsm;
+	fsm->act_on_event(received_event, my_user_data); //reacts to the new event. Possibly changing feed data
 	
 }
 
