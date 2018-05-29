@@ -8,15 +8,6 @@
 #include "FSM.h" 
 #include "Feed.h"
 
-
-void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
-void end_tag(void *userData, const XML_Char *name);
-void char_data(void *userData, const XML_Char *s, int len);
-
-/*
-
-
-*/
 int main(void)
 {
 
