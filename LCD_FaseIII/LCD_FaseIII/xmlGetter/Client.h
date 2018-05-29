@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Observable.h"
 #include <iostream>
 #include <cstdio>
 #include <boost/asio.hpp>
@@ -12,7 +12,7 @@ using namespace boost::asio;
 
 #define CLIENT_TIMEOUT "timeout"
 
-class Client
+class Client : Observable
 {
 public:
 	Client(string ip, const char * port_);

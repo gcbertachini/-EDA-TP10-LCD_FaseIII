@@ -125,6 +125,7 @@ string Client::getInfoTimed(int ms)	//ESTO HAY QUE REHACER
 					if (/*last_string !=aux_string*/ length)
 					{
 						buffer += aux_string;
+						notify_obs();
 						//last_string = aux_string;
 					}
 					else

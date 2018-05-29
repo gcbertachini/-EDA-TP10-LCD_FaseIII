@@ -18,7 +18,7 @@ int main(void)
 	XML_Status status;
 	my_user_data_t user_data;
 	basicLCD * LCD = new LCDHitachi;
-
+	
 	if (LCD->lcdInitOk())
 	{
 		LCD->lcdClear();
@@ -35,7 +35,7 @@ int main(void)
 
 
 		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
-
+		my_xml_getter->add_observer(LCD);
 		if (my_xml_getter.getXml())
 		{
 			string xml_file = my_xml_getter.returnXml();

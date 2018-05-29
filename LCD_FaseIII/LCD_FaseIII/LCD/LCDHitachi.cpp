@@ -277,5 +277,9 @@ void LCDHitachi::lcdUpdateCursor()
 	sendData(newAddCount, IR);	//setteo nuevo address counter
 }
 
-
-
+virtual void update(Observable* observable) {
+	if (observable.type == Observable::Observable_type.client) {
+		Client * client = (Client *) observable;
+		//aca iria el cargar la barrita!!!
+	}
+}
