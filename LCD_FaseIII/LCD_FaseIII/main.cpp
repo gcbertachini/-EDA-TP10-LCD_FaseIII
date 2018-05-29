@@ -1,6 +1,6 @@
 #include "Feed.h"
 
-int main(void)
+int main(int argc, char** argv)
 {
 	Feed feed;
 
