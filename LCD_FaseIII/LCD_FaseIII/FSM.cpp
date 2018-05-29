@@ -41,6 +41,7 @@ void add_date_and_time(my_user_data_t * user_data) {
 	
 	const char * ptr;
 	
+	
 	string day = user_data->to_add_data.substr(5, 2);
 
 	string month = user_data->to_add_data.substr(8, 3);
@@ -76,6 +77,8 @@ void add_date_and_time(my_user_data_t * user_data) {
 	
 	user_data->temp_news->update_date(day + "/" + month + "/" + year);
 	user_data->temp_news->update_time(time);
+
+
 
 	user_data->to_add_data = "";
 	user_data->should_add = false;

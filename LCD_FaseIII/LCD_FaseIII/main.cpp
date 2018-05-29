@@ -4,60 +4,66 @@
 #include <stdio.h>
 #include "expat\expat.h"
 //#include "expat.h"
+#include "LCD\LCDHitachi.h"
+#include "xmlGetter\xml_getter.h"
 
 #include "FSM.h" 
 #include "Feed.h"
 
+
+
 int main(void)
 {
-
-
 	XML_Parser parser;
 	XML_Status status;
 	my_user_data_t user_data;
+	basicLCD * LCD = new LCDHitachi;
+
+	if (LCD->lcdInitOk())
+	{
+		LCD->lcdClear();
+		//hacer función marquesina
+		FSM fsm;
+		user_data.fsm = &fsm;
+		Feed news_feed;
+		user_data.feed = &news_feed;			//should check this constructor!
+
+		parser = XML_ParserCreate(NULL);			//should call XML_ParserFree(); before ending the program!
+		XML_SetElementHandler(parser, start_tag, end_tag);		//Sets handlers for start and end tags.
+		XML_SetCharacterDataHandler(parser, char_data);			//Sets handler for text.
+		XML_SetUserData(parser, &user_data);
 
 
-	FSM fsm;
-	user_data.fsm = &fsm;
-	Feed news_feed;
-	user_data.feed = &news_feed;			//should check this constructor!
+		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
 
-	parser = XML_ParserCreate(NULL);			//should call XML_ParserFree(); before ending the program!
-	XML_SetElementHandler(parser, start_tag, end_tag);		//Sets handlers for start and end tags.
-	XML_SetCharacterDataHandler(parser, char_data);			//Sets handler for text.
-	XML_SetUserData(parser, &user_data);
+		if (my_xml_getter.getXml())
+		{
+			string xml_file = my_xml_getter.returnXml();
 
-	
+			if (xml_file.size() != 0) {
 
-	//xml_getter my_xml_getter("webpage");
+				cout << xml_file << endl;
+				const char * buffer = xml_file.c_str();
+				XML_Parse(parser, buffer, xml_file.size(), true);
+				if (!news_feed.is_empty()) 
+				{
+					int i = 1;
+					while (news_feed.has_more_news()) {
+						News to_show = *news_feed.get_next_title();
 
-	//string xml_file = my_xml_getter.getXml();
-	if (xml_file.size() != 0) {
-
-		cout << xml_file << endl;
-		char * buffer = xml_file.c_str();
-		XML_Parse(parser, buffer, xml_file.size(), true);
-		if (!news_feed.is_empty()) {
-			int i = 1;
-			while (news_feed.has_more_news()) {
-				News to_show = *news_feed.get_next_title();
-				
-				//display n LCD;
-				//USE FUNCTION get_date_and_time to get string in printable format!
+						//USE FUNCTION get_date_and_time to get string in printable format!
+					}
+				}
+				else {
+					//inform the user there are no news to show on the LCD!!!
+					cout << "NO NEWS TO SHOW!";
+				}
 			}
-		}
-		else {
-			//inform the user there are no news to show on the LCD!!!
-			cout << "NO NEWS TO SHOW!";
+
+
+			XML_ParserFree(parser);
 		}
 	}
-
-	
-	
-
-	}
-
-	XML_ParserFree(parser);
 	return 0;
 }
 
