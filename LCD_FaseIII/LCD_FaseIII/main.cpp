@@ -1,8 +1,10 @@
 #pragma once
 
-#include <stdio.h>
-#include "expat.h"
 #include "general.h"
+#include <stdio.h>
+#include "expat\expat.h"
+//#include "expat.h"
+
 #include "FSM.h" 
 #include "Feed.h"
 
@@ -20,6 +22,8 @@ int main(void)
 	XML_Parser parser;
 	XML_Status status;
 	my_user_data_t user_data;
+
+	
 	FSM fsm;
 	user_data.fsm = &fsm;
 	Feed news_feed;
@@ -41,6 +45,7 @@ int main(void)
 		buffer = (char *)malloc(file_size * sizeof(char));
 		if (buffer != NULL) {
 			fread(buffer, sizeof(char), file_size, my_file);
+			cout << string(buffer)<<endl;
 			XML_Parse(parser, buffer, file_size, true);
 			if (!news_feed.is_empty()) {
 				int i = 1;
@@ -50,8 +55,10 @@ int main(void)
 					cout << "title: " + to_show.get_title() << endl;
 					cout << "date: " + to_show.get_date() << endl;
 					cout << "time: " + to_show.get_time() << endl;
+					cout << "time: " + to_show.get_date_and_time() << endl;
 					i++;
 					//display n LCD;
+					//USE FUNCTION get_date_and_time to get string in printable format.
 				}
 			}
 			else {
@@ -62,6 +69,8 @@ int main(void)
 		}
 		fclose(my_file);
 	}
+
+	
 	XML_ParserFree(parser);
 	free(buffer);
 	return 0;
@@ -75,7 +84,8 @@ void start_tag(void *userData, const XML_Char *name, const XML_Char **atts) {
 	Event received_event;
 
 	string received_name = string(name);			//this call to a string constructor makes comparissons easier and addapts to the my_user_data_t struct requirements. 
-
+	cout << "Start tag : " + received_name << endl;
+	//getchar();
 	if (received_name == "channel")
 		received_event = Event::CH_TAG;
 	else if(received_name == "item")
@@ -101,6 +111,8 @@ void end_tag(void *userData, const XML_Char *name) {
 
 	string received_name = string(name); //this call to a string constructor makes comparissons easier and addapts to the my_user_data_t struct requirements.
 
+	cout << "End tag : " + received_name << endl;
+	//getchar();
 	if (received_name == "channel")
 		received_event = Event::CH_TAG_TERMINATOR;
 	else if (received_name == "item")
@@ -121,11 +133,16 @@ void end_tag(void *userData, const XML_Char *name) {
 void char_data(void *userData, const XML_Char *s, int len) {			
 
 	my_user_data_t * my_user_data = (my_user_data_t *)userData;
+	if (my_user_data->should_add) {
+		string received_str = string(s, len);
+		//cout << "Char : "<< len << endl;
+		cout << "Char : " + received_str << endl;
 
-	string received_str = string(s);		
+		//getchar();
+		my_user_data->to_add_data += received_str;		//i add the new info to the last thing i received. 
+														//Note that whenever there s a change in the fsm current state, to_add_data should be set to "" for this to work!
+	}
 
-	my_user_data->to_add_data += received_str;		//i add the new info to the last thing i received. 
-													//Note that whenever there s a change in the fsm current state, to_add_data should be set to "" for this to work! 
 
 }
 

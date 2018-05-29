@@ -49,3 +49,6 @@ int News::get_date_size()const {
 int News::get_time_size() const {
 	return time.length();
 }
+string News::get_date_and_time() const{
+	return (date + " - " + time);
+}

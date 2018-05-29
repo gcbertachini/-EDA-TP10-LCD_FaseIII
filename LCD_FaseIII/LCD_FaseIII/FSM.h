@@ -23,6 +23,7 @@ void add_date_and_time(my_user_data_t * user_data);
 void create_news(my_user_data_t * user_data);
 void insert_news_in_feed(my_user_data_t * user_data);
 void forget_input(my_user_data_t * user_data);
+void should_get_data(my_user_data_t * user_data);
 
 class FSM
 {
@@ -41,11 +42,11 @@ private:
 				//CH_TAG							  CH_TAG_TERMINATOR							TITLE_TAG							   TITLE_TAG_TERMINATOR							ITEM_TAG						 ITEM_TAG_TERMINATOR							PUB_DATE							 PUB_DATE_TERMINATOR					     OTHER_TAG							 OTHER_TAG_TERMINATOR
 		{	{ State::CHANNEL , null_function },			{ State::IDDLE , null_function },		{ State::IDDLE , null_function },        { State::IDDLE , null_function },		 { State::IDDLE , null_function },		{ State::IDDLE , null_function },			{ State::IDDLE , null_function },		{ State::IDDLE , null_function },			 { State::IDDLE , null_function },		  { State::IDDLE , null_function }	}, //IDDLE state
 
-		{	{ State::CHANNEL , null_function },			{ State::IDDLE , null_function },		{ State::CH_TITLE , null_function },	 { State::CHANNEL , null_function },	 { State::ITEM , create_news },   	{ State::CHANNEL , null_function },				{ State::CHANNEL , null_function }, 	{ State::CHANNEL , null_function },		 { State::CHANNEL , null_function },	  { State::CHANNEL , null_function } }, //CHANNEL state
+		{	{ State::CHANNEL , null_function },			{ State::IDDLE , null_function },		{ State::CH_TITLE , should_get_data },	 { State::CHANNEL , null_function },	 { State::ITEM , create_news },   	{ State::CHANNEL , null_function },				{ State::CHANNEL , null_function }, 	{ State::CHANNEL , null_function },		 { State::CHANNEL , null_function },	  { State::CHANNEL , null_function } }, //CHANNEL state
 
 		{	{ State::CH_TITLE , null_function },		{ State::CH_TITLE , null_function },	{ State::CH_TITLE , null_function },	 { State::CHANNEL , add_source },	{ State::CH_TITLE , null_function },    { State::CH_TITLE , null_function },			{ State::CH_TITLE , null_function },	{ State::CH_TITLE , null_function },		 { State::CH_TITLE , null_function },	  { State::CH_TITLE , null_function } }, //CH_TITLE state
 
-		{	{ State::ITEM , null_function },			{ State::ITEM , null_function },	    { State::ITEM_TITLE , null_function },   { State::ITEM , null_function },        { State::ITEM , null_function },		{ State::CHANNEL , insert_news_in_feed },	{ State::ITEM_DATE , null_function },	{ State::ITEM , null_function },			 { State::OTHER_ITEM , null_function },   { State::ITEM , null_function } }, //ITEM state
+		{	{ State::ITEM , null_function },			{ State::ITEM , null_function },	    { State::ITEM_TITLE , should_get_data },   { State::ITEM , null_function },        { State::ITEM , null_function },		{ State::CHANNEL , insert_news_in_feed },	{ State::ITEM_DATE , should_get_data },	{ State::ITEM , null_function },			 { State::OTHER_ITEM , null_function },   { State::ITEM , null_function } }, //ITEM state
 
 		{	{ State::OTHER_ITEM , null_function },		{ State::OTHER_ITEM , null_function },	{ State::OTHER_ITEM , null_function },   { State::OTHER_ITEM , null_function },  { State::OTHER_ITEM , null_function }, { State::OTHER_ITEM , null_function },		{ State::OTHER_ITEM , null_function },  { State::OTHER_ITEM , null_function },	 { State::OTHER_ITEM , null_function },   { State::ITEM , forget_input } }, //OTHER_ITEM state
 

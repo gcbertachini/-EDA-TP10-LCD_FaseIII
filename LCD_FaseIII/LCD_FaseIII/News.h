@@ -12,9 +12,13 @@ class News
 public:
 	News();
 	~News();
+
+
 	string get_title() const;
 	string get_date()const;
 	string get_time() const;
+
+	string get_date_and_time() const;
 
 	void update_title(string title);
 	void update_date(string date);
@@ -23,6 +27,8 @@ public:
 	int get_title_size() const;
 	int get_date_size() const;
 	int get_time_size() const;
+	
+	
 
 
 private:
@@ -30,4 +36,3 @@ private:
 	string date;
 	string time;
 };
-

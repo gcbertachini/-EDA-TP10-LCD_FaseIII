@@ -129,7 +129,7 @@ void Feed::add_news(News* new_news) {
 *	1) bool that is true if the feed is empty, false if not.
 */
 bool Feed::is_empty() {
-	return titles.size(); //will return 0 (false) in case titulares is empty, any other number (true) in case it's not.
+	return (!titles.size()); //will return 1 (true) in case titulares is empty (size == 0), !any other number = 0 (size != 0) in case it's not.
 }
 
 
