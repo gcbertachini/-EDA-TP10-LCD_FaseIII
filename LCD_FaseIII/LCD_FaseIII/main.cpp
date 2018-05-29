@@ -13,17 +13,19 @@ void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
 void end_tag(void *userData, const XML_Char *name);
 void char_data(void *userData, const XML_Char *s, int len);
 
+/*
 
 
+*/
 int main(void)
 {
 
-	FILE * my_file = NULL;
+
 	XML_Parser parser;
 	XML_Status status;
 	my_user_data_t user_data;
 
-	
+
 	FSM fsm;
 	user_data.fsm = &fsm;
 	Feed news_feed;
@@ -32,49 +34,40 @@ int main(void)
 	parser = XML_ParserCreate(NULL);			//should call XML_ParserFree(); before ending the program!
 	XML_SetElementHandler(parser, start_tag, end_tag);		//Sets handlers for start and end tags.
 	XML_SetCharacterDataHandler(parser, char_data);			//Sets handler for text.
-	XML_SetUserData(parser, &user_data);					
+	XML_SetUserData(parser, &user_data);
 
-	char * buffer = NULL;
-	fopen_s(&my_file,"example.xml", "rb");
-	if (my_file != NULL) {
+	
 
-		fseek(my_file, 0L, SEEK_END);			//gets the file pointer to the end of the file.
-		int file_size = ftell(my_file);			//gets the size of the file by getting the pointer's current position
-		rewind(my_file);						//goes back to the beginning of the file.
+	//xml_getter my_xml_getter("webpage");
 
-		buffer = (char *)malloc(file_size * sizeof(char));
-		if (buffer != NULL) {
-			fread(buffer, sizeof(char), file_size, my_file);
-			cout << string(buffer)<<endl;
-			XML_Parse(parser, buffer, file_size, true);
-			if (!news_feed.is_empty()) {
-				int i = 1;
-				while (news_feed.has_more_news()) {
-					News to_show = *news_feed.get_next_title();
-					cout << "news " << i << ": " << endl;
-					cout << "title: " + to_show.get_title() << endl;
-					cout << "date: " + to_show.get_date() << endl;
-					cout << "time: " + to_show.get_time() << endl;
-					cout << "time: " + to_show.get_date_and_time() << endl;
-					i++;
-					//display n LCD;
-					//USE FUNCTION get_date_and_time to get string in printable format.
-				}
+	//string xml_file = my_xml_getter.getXml();
+	if (xml_file.size() != 0) {
+
+		cout << xml_file << endl;
+		char * buffer = xml_file.c_str();
+		XML_Parse(parser, buffer, xml_file.size(), true);
+		if (!news_feed.is_empty()) {
+			int i = 1;
+			while (news_feed.has_more_news()) {
+				News to_show = *news_feed.get_next_title();
+				
+				//display n LCD;
+				//USE FUNCTION get_date_and_time to get string in printable format!
 			}
-			else {
-				//inform the user there are no news to show on the LCD!!!
-				cout << "NO NEWS TO SHOW!";
-			}
-			
 		}
-		fclose(my_file);
+		else {
+			//inform the user there are no news to show on the LCD!!!
+			cout << "NO NEWS TO SHOW!";
+		}
 	}
 
 	
-	XML_ParserFree(parser);
-	free(buffer);
-	return 0;
+	
 
+	}
+
+	XML_ParserFree(parser);
+	return 0;
 }
 
 void start_tag(void *userData, const XML_Char *name, const XML_Char **atts) {
