@@ -1,8 +1,10 @@
+#pragma once
+
 #include <stdio.h>
 #include "expat.h"
 #include "general.h"
+#include "FSM.h" 
 #include "Feed.h"
-#include "FSM.h"
 
 
 void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
@@ -28,7 +30,7 @@ int main(void)
 	XML_SetUserData(parser, &user_data);					
 
 	char * buffer = NULL;
-	my_file = fopen("ejemplo.xml", "rb");
+	fopen_s(&my_file,"nombre.xml", "rb");
 	if (my_file != NULL) {
 
 		fseek(my_file, 0L, SEEK_END);			//gets the file pointer to the end of the file.
@@ -39,15 +41,28 @@ int main(void)
 		if (buffer != NULL) {
 			fread(buffer, sizeof(char), file_size, my_file);
 			XML_Parse(parser, buffer, file_size, true);
-			//iterate over feed and display!!
+			if (!news_feed.is_empty()) {
+				int i = 1;
+				while (news_feed.has_more_news()) {
+					News to_show = *news_feed.get_next_title();
+					cout << "news " << i << ": " << endl;
+					cout << "title: " + to_show.get_title() << endl;
+					cout << "date: " + to_show.get_date() << endl;
+					cout << "time: " + to_show.get_time() << endl;
+					i++;
+					//display n LCD;
+				}
+			}
+			else {
+				//inform the user there are no news to show on the LCD!!!
+				cout << "NO NEWS TO SHOW!";
+			}
+			
 		}
-
+		fclose(my_file);
 	}
-
 	XML_ParserFree(parser);
 	free(buffer);
-	fclose(my_file);
-
 	return 0;
 
 }

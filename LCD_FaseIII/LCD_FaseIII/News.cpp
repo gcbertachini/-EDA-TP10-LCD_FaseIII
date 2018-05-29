@@ -37,7 +37,9 @@ string News::get_title()const {
  string News::get_date()const {
 	return date;
 }
-
+ string News::get_time() const {
+	 return time;
+ }
 int News::get_title_size() const{
 	return title.length();
 }
