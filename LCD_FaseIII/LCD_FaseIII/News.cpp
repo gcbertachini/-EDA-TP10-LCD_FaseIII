@@ -4,6 +4,9 @@
 
 News::News()
 {
+	title = "";
+	time = "";
+	date = "";
 }
 
 
@@ -12,18 +15,40 @@ News::~News()
 }
 
 
-char * News::get_Title() {}
+void News::update_title(string title){
+	this->title = title;
+}
 
-char * News::get_Date(){}
+void News::update_date(string date){
+	this->date = date;
+}
+void News::update_time(string time) {
+	this->time = time;
+}
 
-void News::update_Title(char * title, uint index){}
+/***************************************
+***************getters******************
+****************************************/
 
-void News::update_Date(char * title, uint index){}
+string News::get_title()const {
+	return title;
+}
 
-void News::curren_Title(char s, uint index){}
-
-void News::curren_Date(char s, uint index){}
-
-int News::get_Title_size(){}
-
-int News::get_Date_size(){}
+ string News::get_date()const {
+	return date;
+}
+ string News::get_time() const {
+	 return time;
+ }
+int News::get_title_size() const{
+	return title.length();
+}
+int News::get_date_size()const {
+	return date.length();
+}
+int News::get_time_size() const {
+	return time.length();
+}
+string News::get_date_and_time() const{
+	return (date + " - " + time);
+}
