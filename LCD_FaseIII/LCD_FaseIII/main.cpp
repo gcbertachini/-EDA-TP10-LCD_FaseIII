@@ -17,10 +17,11 @@ int main(void)
 {
 
 	FILE * my_file = NULL;
-
 	XML_Parser parser;
 	XML_Status status;
 	my_user_data_t user_data;
+	FSM fsm;
+	user_data.fsm = &fsm;
 	Feed news_feed;
 	user_data.feed = &news_feed;			//should check this constructor!
 
@@ -30,7 +31,7 @@ int main(void)
 	XML_SetUserData(parser, &user_data);					
 
 	char * buffer = NULL;
-	fopen_s(&my_file,"nombre.xml", "rb");
+	fopen_s(&my_file,"example.xml", "rb");
 	if (my_file != NULL) {
 
 		fseek(my_file, 0L, SEEK_END);			//gets the file pointer to the end of the file.
@@ -86,6 +87,7 @@ void start_tag(void *userData, const XML_Char *name, const XML_Char **atts) {
 	else 
 		received_event = Event::OTHER_TAG;
 
+	
 	FSM * fsm = (FSM*) my_user_data->fsm;
 	fsm->act_on_event(received_event, my_user_data);
 
