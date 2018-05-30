@@ -53,12 +53,11 @@ int main(void)
 					EventManager manager(&func, &news_feed);
  					while (news_feed.has_more_news()) {
 						const News * to_show;
-						if (manager.receive_event()) {
+						if (manager.receive_event())
 							to_show = manager.handle_event();
-						}
-						else {
+						else 
 							to_show = news_feed.get_next_title();
-						}
+
 						func.marquesina(to_show->get_title(), 0);
 						func.imprimirFecha(to_show->get_date_and_time());
 					}
