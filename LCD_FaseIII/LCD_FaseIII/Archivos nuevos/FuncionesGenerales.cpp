@@ -93,3 +93,18 @@ void FuncionesGenerales::imprimirFecha(string str)
 //		}
 //	}
 //}
+
+
+void FuncionesGenerales::update() {
+
+	static char percentage = 0;
+
+	imprimirPorcentaje(percentage);
+	percentage++;
+
+	if (percentage == 99) {
+		LCD->lcdClear();
+		percentage = 0;
+	}
+	
+}

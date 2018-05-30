@@ -125,7 +125,12 @@ string Client::getInfoTimed(int ms)	//ESTO HAY QUE REHACER
 					if (/*last_string !=aux_string*/ length)
 					{
 						buffer += aux_string;
-						notify_obs();
+						notify_obs();			//va llenando de a uno porciento del display. 
+												//Se deberia llenar segun el porcentaje recibido del archivo.
+												//habria que hacer una cuenta aca de cuanto se recibio en porcentaje.
+												//y hacer un loop de cuantas barras se quiera.
+												//Es poco copado pero es porque no se penso hacer esto con Observer y es la solucion rapida.
+												
 						//last_string = aux_string;
 					}
 					else

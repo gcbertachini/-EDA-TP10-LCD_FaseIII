@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include "expat\expat.h"
 //#include "expat.h"
-#include "LCD\LCDHitachi.h"
+#include "Archivos nuevos\LCDHitachi.h"
 #include "xmlGetter\xml_getter.h"
 #include "FSM.h" 
 #include "Feed.h"
 #include "Archivos nuevos\FuncionesGenerales.h"
-
+#include "EventManager.h"
 
 int main(void)
 {
@@ -18,6 +18,7 @@ int main(void)
 	my_user_data_t user_data;
 	LCDHitachi * LCD = new LCDHitachi;
 	FuncionesGenerales func(*LCD);
+
 
 	if (LCD->lcdInitOk())
 	{
@@ -35,7 +36,7 @@ int main(void)
 
 
 		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
-		my_xml_getter.add_observer(LCD);
+		my_xml_getter.add_observer(&func);
 		if (my_xml_getter.getXml())
 		{
 			string xml_file = my_xml_getter.returnXml();
@@ -43,15 +44,23 @@ int main(void)
 			if (xml_file.size() != 0) {
 
 				cout << xml_file << endl;
-				const char * buffer = xml_file.c_str();
+				const char * buffer = xml_file.c_str();	
 				XML_Parse(parser, buffer, xml_file.size(), true);
+
+				//starts displaying news!
 				if (!news_feed.is_empty()) 
 				{
-					int i = 1;
-					while (news_feed.has_more_news()) {
-						News to_show = *news_feed.get_next_title();
-
-						//USE FUNCTION get_date_and_time to get string in printable format!
+					EventManager manager(&func, &news_feed);
+ 					while (news_feed.has_more_news()) {
+						const News * to_show;
+						if (manager.receive_event()) {
+							to_show = manager.handle_event();
+						}
+						else {
+							to_show = news_feed.get_next_title();
+						}
+						func.marquesina(to_show->get_title(), 0);
+						func.imprimirFecha(to_show->get_date_and_time());
 					}
 				}
 				else {
@@ -59,8 +68,6 @@ int main(void)
 					cout << "NO NEWS TO SHOW!";
 				}
 			}
-
-
 			XML_ParserFree(parser);
 		}
 	}

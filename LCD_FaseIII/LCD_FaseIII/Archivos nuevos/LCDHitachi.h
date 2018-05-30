@@ -22,6 +22,7 @@ public:
 	bool lcdMoveCursorLeft();
 	bool lcdSetCursorPosition(const cursorPosition pos);
 	cursorPosition lcdGetCursorPosition();
+
 private:
 	void lcdUpdateCursor();
 
