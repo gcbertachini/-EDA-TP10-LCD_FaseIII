@@ -6,10 +6,9 @@
 //#include "expat.h"
 #include "LCD\LCDHitachi.h"
 #include "xmlGetter\xml_getter.h"
-
 #include "FSM.h" 
 #include "Feed.h"
-
+#include "Archivos nuevos\FuncionesGenerales.h"
 
 
 int main(void)
@@ -17,8 +16,9 @@ int main(void)
 	XML_Parser parser;
 	XML_Status status;
 	my_user_data_t user_data;
-	basicLCD * LCD = new LCDHitachi;
-	
+	LCDHitachi * LCD = new LCDHitachi;
+	FuncionesGenerales func(*LCD);
+
 	if (LCD->lcdInitOk())
 	{
 		LCD->lcdClear();
@@ -35,7 +35,7 @@ int main(void)
 
 
 		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
-		my_xml_getter->add_observer(LCD);
+		my_xml_getter.add_observer(LCD);
 		if (my_xml_getter.getXml())
 		{
 			string xml_file = my_xml_getter.returnXml();

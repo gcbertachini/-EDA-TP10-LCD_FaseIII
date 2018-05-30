@@ -3,9 +3,9 @@
 #include<string>
 using namespace std;
 #define PORT "80"
+#include "Observable.h"
 
-
-class xml_getter
+class xml_getter : public Observable
 {
 public:
 	xml_getter(string webpage);	

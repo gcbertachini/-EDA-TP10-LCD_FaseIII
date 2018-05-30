@@ -117,40 +117,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Archivos nuevos\basicLCD.h" />
+    <ClInclude Include="Archivos nuevos\ftd2xx.h" />
+    <ClInclude Include="Archivos nuevos\FuncionesGenerales.h" />
+    <ClInclude Include="Archivos nuevos\General.h" />
+    <ClInclude Include="Archivos nuevos\HitachiLow.h" />
+    <ClInclude Include="Archivos nuevos\LCDHitachi.h" />
+    <ClInclude Include="Archivos nuevos\Timer.h" />
     <ClInclude Include="Feed.h" />
     <ClInclude Include="FSM.h" />
     <ClInclude Include="general.h" />
-    <ClInclude Include="LCD\basicLCD.h" />
-    <ClInclude Include="LCD\ftd2xx.h" />
-    <ClInclude Include="LCD\General.h" />
-    <ClInclude Include="LCD\HitachiLow.h" />
-    <ClInclude Include="LCD\LCDHitachi.h" />
     <ClInclude Include="News.h" />
     <ClInclude Include="Observable.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="xmlGetter\Client.h" />
-    <ClInclude Include="xmlGetter\Timer.h" />
     <ClInclude Include="xmlGetter\xml_getter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Archivos nuevos\basicLCD.cpp" />
+    <ClCompile Include="Archivos nuevos\FuncionesGenerales.cpp" />
+    <ClCompile Include="Archivos nuevos\HitachiLow.cpp" />
+    <ClCompile Include="Archivos nuevos\LCDHitachi.cpp" />
+    <ClCompile Include="Archivos nuevos\Timer.cpp" />
     <ClCompile Include="Feed.cpp" />
     <ClCompile Include="FSM.cpp" />
-    <ClCompile Include="LCD\basicLCD.cpp" />
-    <ClCompile Include="LCD\HitachiLow.cpp" />
-    <ClCompile Include="LCD\LCDHitachi.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="News.cpp" />
     <ClCompile Include="Observable.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="xmlGetter\Client.cpp" />
-    <ClCompile Include="xmlGetter\Timer.cpp" />
     <ClCompile Include="xmlGetter\xml_getter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="LCD\ftd2xx.lib" />
+    <Library Include="Archivos nuevos\ftd2xx.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
