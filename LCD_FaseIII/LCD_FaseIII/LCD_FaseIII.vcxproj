@@ -132,6 +132,7 @@
     <ClInclude Include="News.h" />
     <ClInclude Include="xmlGetter\Client.h" />
     <ClInclude Include="xmlGetter\Observable.h" />
+    <ClInclude Include="xmlGetter\Observer.h" />
     <ClInclude Include="xmlGetter\xml_getter.h" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,7 @@
     <ClCompile Include="News.cpp" />
     <ClCompile Include="xmlGetter\Client.cpp" />
     <ClCompile Include="xmlGetter\Observable.cpp" />
+    <ClCompile Include="xmlGetter\Observer.cpp" />
     <ClCompile Include="xmlGetter\xml_getter.cpp" />
   </ItemGroup>
   <ItemGroup>
