@@ -76,7 +76,6 @@ bool EventManager::receive_event() {
 				break;
 			case ALLEGRO_KEY_Q:
 				should_quit = true;
-				news = NULL;
 				break;
 			}
 			move = false;
