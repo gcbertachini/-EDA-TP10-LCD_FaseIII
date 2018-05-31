@@ -16,7 +16,7 @@ FuncionesGenerales::~FuncionesGenerales()
 
 void FuncionesGenerales::marquesina(string str, int row)
 {
-	Ptimer->stop();
+	Ptimer->stop();			
 
 	if (Ptimer->getTime() > sleepTimer)
 	{

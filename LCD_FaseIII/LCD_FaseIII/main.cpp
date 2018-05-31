@@ -29,14 +29,15 @@ int main(void)
 		Feed news_feed;
 		user_data.feed = &news_feed;			//should check this constructor!
 
-		parser = XML_ParserCreate(NULL);			//should call XML_ParserFree(); before ending the program!
-		XML_SetElementHandler(parser, start_tag, end_tag);		//Sets handlers for start and end tags.
+		parser = XML_ParserCreate(NULL);			
+		XML_SetElementHandler(parser, start_tag, end_tag);		//Sets handlers for start and end tags: callback functions.
 		XML_SetCharacterDataHandler(parser, char_data);			//Sets handler for text.
-		XML_SetUserData(parser, &user_data);
+		XML_SetUserData(parser, &user_data);					
 
 
 		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
 		my_xml_getter.add_observer(&func);
+
 		if (my_xml_getter.getXml())
 		{
 			string xml_file = my_xml_getter.returnXml();
