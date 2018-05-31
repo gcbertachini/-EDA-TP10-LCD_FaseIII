@@ -44,7 +44,7 @@ EventManager::~EventManager()
 bool EventManager::receive_event() {
 
 	bool has_new_event = false;
-	const News * news;
+	const News * news = NULL;
 
 	ALLEGRO_EVENT ev;
 	if (al_get_next_event(queue, &ev)) {
@@ -57,11 +57,9 @@ bool EventManager::receive_event() {
 			switch (ev.keyboard.keycode) {
 			case ALLEGRO_KEY_EQUALS:
 				func->subir_vel();
-				news = NULL;
 				break;
 			case ALLEGRO_KEY_MINUS:
 				func->bajar_vel();
-				news = NULL;
 			case ALLEGRO_KEY_A:
 				feed->get_previous_title();
 				news = feed->get_previous_title();

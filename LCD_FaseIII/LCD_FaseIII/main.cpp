@@ -10,8 +10,7 @@
 #include "Archivos nuevos\FuncionesGenerales.h"
 #include "EventManager.h"
 
-int main(void)
-{
+int main(void){
 	XML_Parser parser;
 	XML_Status status;
 	my_user_data_t user_data;
@@ -19,8 +18,7 @@ int main(void)
 	FuncionesGenerales func(*LCD);
 
 
-	if (LCD->lcdInitOk())
-	{
+	if (LCD->lcdInitOk()){
 		LCD->lcdClear();
 		//hacer función marquesina
 		FSM fsm;
@@ -37,8 +35,7 @@ int main(void)
 		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
 		my_xml_getter.add_observer(&func);
 
-		if (my_xml_getter.getXml())
-		{
+		if (my_xml_getter.getXml()){
 			string xml_file = my_xml_getter.returnXml();
 
 			if (xml_file.size() != 0) {
@@ -48,22 +45,21 @@ int main(void)
 				XML_Parse(parser, buffer, xml_file.size(), true);
 
 				//starts displaying news!
-				if (!news_feed.is_empty()) 
+				if (!news_feed.is_empty())
 				{
 					EventManager manager(&func, &news_feed);
- 					while (news_feed.has_more_news()) {
+					while (news_feed.has_more_news()) {
 						func.resetCounter();
 						bool displaying_current_news = true;
-						News * to_show = (News*) news_feed.get_next_title();			//news to show on the display
+						News * to_show = (News*)news_feed.get_next_title();			//news to show on the display
 						while (displaying_current_news) {										//displaying the news
 							if (manager.receive_event()) {}
-								to_show = (News*)manager.handle_event();				//changes the news to be shown if the user presses a key 
-								func.resetCounter();									//resets the marquesina whenever the news to be shown is changed!
-							}
-							displaying_current_news = !func.marquesina(to_show->get_title(), 0);		//shows the title on the LCD
-																										//and verifies if the current news has been completely shown on the display
-							func.imprimirFecha(to_show->get_date_and_time());
+							to_show = (News*)manager.handle_event();				//changes the news to be shown if the user presses a key 
+							func.resetCounter();									//resets the marquesina whenever the news to be shown is changed!
 						}
+						displaying_current_news = !func.marquesina(to_show->get_title(), 0);		//shows the title on the LCD
+																									//and verifies if the current news has been completely shown on the display
+						func.imprimirFecha(to_show->get_date_and_time());
 					}
 				}
 				else {
@@ -73,9 +69,12 @@ int main(void)
 					*LCD << pdm;
 				}
 			}
-			XML_ParserFree(parser);
 		}
+
 	}
+	XML_ParserFree(parser);
+		
+	
 	delete LCD;
 
 	return 0;
