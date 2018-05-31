@@ -54,9 +54,6 @@
     <ClInclude Include="Archivos nuevos\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Archivos nuevos\Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="xmlGetter\Observable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -101,9 +98,6 @@
     <ClCompile Include="Archivos nuevos\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Archivos nuevos\Observer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="xmlGetter\Observable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -111,7 +105,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="xmlGetter\Observer.cpp">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

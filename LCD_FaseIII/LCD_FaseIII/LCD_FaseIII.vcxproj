@@ -136,7 +136,6 @@
     <ClInclude Include="Archivos nuevos\General.h" />
     <ClInclude Include="Archivos nuevos\HitachiLow.h" />
     <ClInclude Include="Archivos nuevos\LCDHitachi.h" />
-    <ClInclude Include="Archivos nuevos\Observer.h" />
     <ClInclude Include="Archivos nuevos\Timer.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Feed.h" />
@@ -153,7 +152,6 @@
     <ClCompile Include="Archivos nuevos\FuncionesGenerales.cpp" />
     <ClCompile Include="Archivos nuevos\HitachiLow.cpp" />
     <ClCompile Include="Archivos nuevos\LCDHitachi.cpp" />
-    <ClCompile Include="Archivos nuevos\Observer.cpp" />
     <ClCompile Include="Archivos nuevos\Timer.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Feed.cpp" />
