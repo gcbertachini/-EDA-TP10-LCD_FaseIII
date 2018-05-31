@@ -3,7 +3,6 @@
 #include "general.h"
 #include <stdio.h>
 #include "expat\expat.h"
-//#include "expat.h"
 #include "Archivos nuevos\LCDHitachi.h"
 #include "xmlGetter\xml_getter.h"
 #include "FSM.h" 

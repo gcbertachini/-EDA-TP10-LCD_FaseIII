@@ -5,6 +5,7 @@ FuncionesGenerales::FuncionesGenerales(LCDHitachi& lcd_)
 {
 	LCD = &lcd_;
 	this->Ptimer = new Timer;
+	this->sleepTimer = 150;
 }
 
 
@@ -14,9 +15,10 @@ FuncionesGenerales::~FuncionesGenerales()
 }
 
 
-void FuncionesGenerales::marquesina(string str, int row)
+bool FuncionesGenerales::marquesina(string str, int row)
 {
 	Ptimer->stop();
+	bool aux;
 
 	if (Ptimer->getTime() > sleepTimer)
 	{
@@ -40,8 +42,15 @@ void FuncionesGenerales::marquesina(string str, int row)
 			}
 			j++;
 		}
+		if (j <= (sizeStr - 16))
+		{
+			aux = false;
+		}
+		else
+			aux = false;
 	}
 	Ptimer->start();
+	return aux;
 }
 
 
@@ -107,4 +116,22 @@ void FuncionesGenerales::update() {
 		percentage = 0;
 	}
 	
+}
+
+
+void FuncionesGenerales::subir_vel()
+{
+	if (sleepTimer >= 50)
+	{
+		sleepTimer -= 50;
+	}
+}
+
+
+void FuncionesGenerales::bajar_vel()
+{
+	if (sleepTimer <= 300)
+	{
+		sleepTimer += 50;
+	}
 }

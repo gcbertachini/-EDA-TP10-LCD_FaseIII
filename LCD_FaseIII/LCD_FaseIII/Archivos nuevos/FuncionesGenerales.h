@@ -17,7 +17,7 @@ public:
 	basicLCD * LCD;
 	Timer * Ptimer;
 
-	void marquesina(string str, int row);
+	bool marquesina(string str, int row);
 	void imprimirPorcentaje(char porcentaje);
 	void imprimirFecha(string str);
 	void subir_vel();
