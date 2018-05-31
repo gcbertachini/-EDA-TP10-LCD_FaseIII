@@ -47,7 +47,10 @@ bool FuncionesGenerales::marquesina(string str, int row)
 			aux = false;
 		}
 		else
-			aux = false;
+		{
+			aux = true;
+			resetCounter();
+		}
 	}
 	Ptimer->start();
 	return aux;
@@ -134,4 +137,9 @@ void FuncionesGenerales::bajar_vel()
 	{
 		sleepTimer += 50;
 	}
+}
+
+void FuncionesGenerales::resetCounter()
+{
+	this->j = 0;
 }

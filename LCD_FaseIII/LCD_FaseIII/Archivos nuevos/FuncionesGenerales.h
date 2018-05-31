@@ -22,6 +22,7 @@ public:
 	void imprimirFecha(string str);
 	void subir_vel();
 	void bajar_vel();
+	void resetCounter();
 	virtual void update();
 
 private:

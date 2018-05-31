@@ -63,12 +63,16 @@ int main(void)
 				}
 				else {
 					//inform the user there are no news to show on the LCD!!!
-					cout << "NO NEWS TO SHOW!";
+					string str = "NO NEWS TO SHOW!";
+					unsigned char * pdm = (unsigned char *)str.c_str();
+					*LCD << pdm;
 				}
 			}
 			XML_ParserFree(parser);
 		}
 	}
+	delete LCD;
+
 	return 0;
 }
 
