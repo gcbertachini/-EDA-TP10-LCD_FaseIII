@@ -53,13 +53,14 @@ int main(void){
 						bool displaying_current_news = true;
 						News * to_show = (News*)news_feed.get_next_title();			//news to show on the display
 						while (displaying_current_news) {										//displaying the news
-							if (manager.receive_event()) {}
-							to_show = (News*)manager.handle_event();				//changes the news to be shown if the user presses a key 
-							func.resetCounter();									//resets the marquesina whenever the news to be shown is changed!
+							if (manager.receive_event()) {
+								to_show = (News*)manager.handle_event();				//changes the news to be shown if the user presses a key 
+								func.resetCounter();									//resets the marquesina whenever the news to be shown are changed!
+							}
+							displaying_current_news = !func.marquesina(to_show->get_title(), 0);		//shows the title on the LCD
+																										//and verifies if the current news has been completely shown on the display
+							func.imprimirFecha(to_show->get_date_and_time());
 						}
-						displaying_current_news = !func.marquesina(to_show->get_title(), 0);		//shows the title on the LCD
-																									//and verifies if the current news has been completely shown on the display
-						func.imprimirFecha(to_show->get_date_and_time());
 					}
 				}
 				else {
