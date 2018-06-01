@@ -15,6 +15,6 @@ void Observable::add_observer(Observer* ob) {
 }
 void Observable::notify_obs() {
 	for (std::vector<Observer*>::iterator it = obs.begin(); it != obs.end(); ++it) {
-		(*it)->update(this);
+		(*it)->update();
 	}
 }
