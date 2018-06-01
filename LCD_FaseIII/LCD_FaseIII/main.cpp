@@ -36,7 +36,7 @@ int main(void){
 		XML_SetUserData(parser, &user_data);					
 
 
-		xml_getter my_xml_getter("news.mit.edu/rss/school/engineering");
+		xml_getter my_xml_getter("rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
 		my_xml_getter.add_observer(&func);
 
 		if (my_xml_getter.getXml()){
