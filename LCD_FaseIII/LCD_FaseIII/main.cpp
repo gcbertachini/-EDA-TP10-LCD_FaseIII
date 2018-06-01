@@ -15,14 +15,14 @@ void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
 void end_tag(void *userData, const XML_Char *name);
 
 int main(void){
-	XML_Parser parser;
-	XML_Status status;
+
 	my_user_data_t user_data;
 	LCDHitachi * LCD = new LCDHitachi;
 	FuncionesGenerales func(*LCD);
 
-
 	if (LCD->lcdInitOk()){
+		XML_Parser parser;
+		XML_Status status;
 		LCD->lcdClear();
 		//hacer función marquesina
 		FSM fsm;
@@ -30,7 +30,7 @@ int main(void){
 		Feed news_feed;
 		user_data.feed = &news_feed;			//should check this constructor!
 
-		parser = XML_ParserCreate(NULL);			
+		parser = XML_ParserCreate(NULL);
 		XML_SetElementHandler(parser, start_tag, end_tag);		//Sets handlers for start and end tags: callback functions.
 		XML_SetCharacterDataHandler(parser, char_data);			//Sets handler for text.
 		XML_SetUserData(parser, &user_data);					
