@@ -10,6 +10,10 @@
 #include "FuncionesGenerales.h"
 #include "EventManager.h"
 
+void char_data(void *userData, const XML_Char *s, int len);
+void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
+void end_tag(void *userData, const XML_Char *name);
+
 int main(void){
 	XML_Parser parser;
 	XML_Status status;

@@ -7,5 +7,5 @@ public:
 	Observer();
 	~Observer();
 
-	virtual void update(Observable* observable) = 0;
+	virtual void update() = 0;
 };
