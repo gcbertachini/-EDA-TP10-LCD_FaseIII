@@ -86,10 +86,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>_MBCS;_CRT_NONSTDC_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\xmlGetter;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\expat;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\Archivos nuevos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\xmlGetter;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\expat;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\Archivos nuevos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\Archivos nuevos;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ftd2xx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -110,12 +110,12 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\xmlGetter;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\expat;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\Archivos nuevos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\xmlGetter;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\expat;C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\Archivos nuevos;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\mgonz\Desktop\EDA\TP\-EDA-TP10-LCD_FaseIII\LCD_FaseIII\LCD_FaseIII\Archivos nuevos;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>ftd2xx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

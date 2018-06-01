@@ -75,9 +75,8 @@ int main(void){
 				}
 			}
 		}
-
-	}
 	XML_ParserFree(parser);
+	}
 		
 	
 	delete LCD;
