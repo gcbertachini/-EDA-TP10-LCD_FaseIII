@@ -2,13 +2,17 @@
 
 #include "general.h"
 #include <stdio.h>
-#include "expat\expat.h"
-#include "Archivos nuevos\LCDHitachi.h"
-#include "xmlGetter\xml_getter.h"
+#include "expat.h"
+#include "LCDHitachi.h"
+#include "xml_getter.h"
 #include "FSM.h" 
 #include "Feed.h"
-#include "Archivos nuevos\FuncionesGenerales.h"
+#include "FuncionesGenerales.h"
 #include "EventManager.h"
+
+void char_data(void *userData, const XML_Char *s, int len);
+void start_tag(void *userData, const XML_Char *name, const XML_Char **atts);
+void end_tag(void *userData, const XML_Char *name);
 
 int main(void){
 	XML_Parser parser;

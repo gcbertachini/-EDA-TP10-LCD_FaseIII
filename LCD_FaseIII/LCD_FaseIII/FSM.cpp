@@ -39,7 +39,6 @@ void add_news_title(my_user_data_t * user_data) {
 
 void add_date_and_time(my_user_data_t * user_data) {
 	
-	const char * ptr;
 	
 	
 	string day = user_data->to_add_data.substr(5, 2);
