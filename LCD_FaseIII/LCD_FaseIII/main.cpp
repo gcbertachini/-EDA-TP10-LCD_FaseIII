@@ -2,12 +2,12 @@
 
 #include "general.h"
 #include <stdio.h>
-#include "expat\expat.h"
-#include "Archivos nuevos\LCDHitachi.h"
-#include "xmlGetter\xml_getter.h"
+#include "expat.h"
+#include "LCDHitachi.h"
+#include "xml_getter.h"
 #include "FSM.h" 
 #include "Feed.h"
-#include "Archivos nuevos\FuncionesGenerales.h"
+#include "FuncionesGenerales.h"
 #include "EventManager.h"
 
 int main(void){
